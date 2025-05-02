@@ -1,15 +1,12 @@
-# TinyLLM  
+# Mera  
 *A Framework for Training, Fine-Tuning, and Deploying Smaller LLMs on Custom Datasets*
-
-- **Website**: [TinyLLM.org](https://tinyllm.org/)  
-- **ArXiv**: [ArXiv/2412.15304](https://arxiv.org/abs/2412.15304)
 
 
 
 ## Introduction  
-TinyLLM is a lightweight and customizable framework for efficiently training, fine-tuning, and deploying small-scale Large Language Models (LLMs) on custom datasets. It is optimized for resource-constrained environments, making it ideal for applications on edge devices and IoT platforms.
+Mera is a lightweight and customizable framework for efficiently training, fine-tuning, and deploying small-scale Large Language Models (LLMs) on custom datasets. It is optimized for resource-constrained environments, making it ideal for applications on edge devices and IoT platforms.
 
-TinyLLM demonstrates adaptability across various datasets, particularly in embedded sensing tasks like hand gesture detection, robot localization, and breathing rate detection. The framework enables training smaller models for diverse domains and is not limited to embedded sensing.
+Mera demonstrates adaptability across various datasets, particularly in embedded sensing tasks like hand gesture detection, robot localization, and breathing rate detection. The framework enables training smaller models for diverse domains and is not limited to embedded sensing.
 
 
 
@@ -43,7 +40,7 @@ TinyLLM demonstrates adaptability across various datasets, particularly in embed
 2. Tokenize datasets using `encode.py`:  
    - Supports user-provided custom datasets (in CSV format) or datasets hosted on HuggingFace.  
    - By default, the script processes the Fineweb dataset (10 billion tokens variant, auto-downloaded) and the SHL IoT sensor dataset.  
-   - Follow the instructions [here](https://github.com/weiserlab/TinyLLM/tree/main/Datasets/SHL) to download the SHL dataset.  
+   - Follow the instructions [here](./Datasets/SHL) to download the SHL dataset.  
    - Update the `datasets_to_tokenize` parameter in `encode.py` for custom datasets.  
      ```bash
      python encode.py
@@ -153,7 +150,7 @@ TinyLLM demonstrates adaptability across various datasets, particularly in embed
    from transformers import pipeline
    import torch
    
-   path = "./TinyLLM/Fine-tune/results/GPT 2/breathe-0/"
+   path = "./Fine-tune/results/GPT 2/breathe-0/"
    generator = pipeline("text-generation", model=path, max_new_tokens=30, repetition_penalty=1.3, device_map="auto")
    prompt = "Your input text here"
    print(generator(prompt)[0]['generated_text'])
@@ -176,11 +173,8 @@ TinyLLM demonstrates adaptability across various datasets, particularly in embed
 
 
 ### Notes
-- Currently, 3 in-house processed datasets (gesture detection, localisation, and breathing detection) are provided for fine-tuning, apart from `swim`, which has to be processed (find more about using the dataset [here](https://github.com/weiserlab/TinyLLM/blob/main/Datasets/swim/process.ipynb)). More information about the in-house datasets will be updated soon [here](www.huggingface.co/tinyllm).
+- Currently, 3 in-house processed datasets (gesture detection, localisation, and breathing detection) are provided for fine-tuning, apart from `swim`, which has to be processed (find more about using the dataset [here](./Datasets/swim/process.ipynb)). More information about the in-house datasets will be updated soon [here](www.huggingface.co/tinyllm).
 - The checkpoints created during the fine-tuning process can be removed later to save space.
-
-## Contributing  
-We welcome contributions to TinyLLM! Visit our [HuggingFace](https://huggingface.co/TinyLLM) page for pre-trained models on web and sensor data.  
 
 
 
